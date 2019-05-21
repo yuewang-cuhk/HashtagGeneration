@@ -1,8 +1,8 @@
 # HashtagGeneration
-The official implementation of the NAACL-HLT 2019 oral paper ["Microblog Hashtag Generation via Encoding Conversation Contexts"](https://arxiv.org/pdf/1905.07584.pdf). This is a joint work with [Tencent AI Lab](https://ai.tencent.com/ailab).
+The official implementation of the NAACL-HLT 2019 oral paper ["Microblog Hashtag Generation via Encoding Conversation Contexts"](https://arxiv.org/pdf/1905.07584.pdf). This is a joint work with [NLP Center at Tencent AI Lab](https://ai.tencent.com/ailab/nlp/).
 
 ## Data
-Due to the copyright issue of TREC 2011 Twitter dataset, we only release the Weibo dataset crawled by [NLP Center at Tencent AI Lab](https://ai.tencent.com/ailab/nlp/). To obtain the Twitter dataset, please contact [Yue Wang](yuewang-cuhk.github.io) or [Jing Li](https://girlgunner.github.io/jingli/).
+Due to the copyright issue of TREC 2011 Twitter dataset, we only release the Weibo dataset crawled by [NLP Center at Tencent AI Lab](https://ai.tencent.com/ailab/nlp/). For more details about the Twitter dataset, please contact [Yue Wang](yuewang-cuhk.github.io) or [Jing Li](https://girlgunner.github.io/jingli/).
 
 ### Weibo data format
 * The dataset is randomly splited into three segments (80% training, 10% validation, 10% testing)
