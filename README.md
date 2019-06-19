@@ -1,5 +1,5 @@
 # HashtagGeneration
-The official implementation of the **NAACL-HLT 2019 oral** paper ["Microblog Hashtag Generation via Encoding Conversation Contexts"](https://arxiv.org/pdf/1905.07584.pdf). This is a joint work with [NLP Center at Tencent AI Lab](https://ai.tencent.com/ailab/nlp/).
+The official implementation of the **NAACL-HLT 2019 oral** paper "[Microblog Hashtag Generation via Encoding Conversation Contexts](https://www.aclweb.org/anthology/N19-1164)". This is a joint work with [NLP Center at Tencent AI Lab](https://ai.tencent.com/ailab/nlp/).
 
 ## Data
 Due to the copyright issue of TREC 2011 Twitter dataset, we only release the Weibo dataset (in `data/Weibo`). For more details about the Twitter dataset, please contact [Yue Wang](yuewang-cuhk.github.io) or [Jing Li](https://girlgunner.github.io/jingli/).
@@ -20,14 +20,19 @@ TBA
 ## Citation
 If you use either the code or data in your paper, please cite our paper:
 ```
-@inproceedings{conf/naacl/yuewang19,
-  author    = {Yue Wang and
-               Jing Li and
-               Irwin King and
-               Michael R. Lyu and
-               Shuming Shi},
-  title     = {Microblog Hashtag Generation via Encoding Conversation Contexts},
-  booktitle = {Proceedings of NAACL-HLT},
-  year      = {2019}
+@inproceedings{wang-etal-2019-microblog,
+    title = "Microblog Hashtag Generation via Encoding Conversation Contexts",
+    author = "Wang, Yue  and
+      Li, Jing  and
+      King, Irwin  and
+      Lyu, Michael R.  and
+      Shi, Shuming",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/N19-1164",
+    pages = "1624--1633",
 }
 ```
