@@ -31,7 +31,6 @@ To preprocess the raw plain text into inputs for the model, run: `bash preproces
 data_tag='Weibo'
 dataset=../data/${data_tag}
 
-
 if [[ $dataset =~ 'Twitter' ]]
 then
     vs=30000
@@ -52,14 +51,12 @@ else
     echo 'Wrong dataset name!!'
 fi
 
-
 if [[ ! -e ../processed_data ]]
 then
     mkdir ../processed_data
 fi
 
 full_data_tag=${data_tag}_src${slt}_conv${clt}_tgt${tl}_v${vs}
-
 
 python -u ../preprocess.py \
     -max_shard_size 52428800 \
@@ -112,7 +109,6 @@ else
     model_tag='rnn'
 fi
 
-
 model_name=${dataset}_${model}_${model_tag}_${emb_size}emb_seed${seed}${special}
 
 nohup \
@@ -162,7 +158,6 @@ else
     echo 'the model name should contain dataset name'
 fi
 
-
 nohup \
 python -u ../translate.py \
     -model saved_models/$1  \
@@ -180,7 +175,7 @@ python -u ../translate.py \
     >> log/translate_${1%.pt}.log &
 ```
 
-I also add the evaluation function into this script, you can comment it if you like.
+I also add the evaluation function into this script, you can comment it if you like. The testing log will also be saved under `log`.
 
 ### Evaluation
 To evaluate the predictions, run `bash evaluate.sh [prediction file path]`. The script is depicted below:
@@ -206,7 +201,7 @@ python -u ../evaluate.py \
     -pred $1 \
     ${cmd} 
 ```
-The script will output different performance, including _Precision_, _Recall_, _F1 measure_ at different numbers (e.g., 1,5, 10, 15) of top predictions and the _ROUGE_ scores for the top one prediction. For Chinese Weibo, we need to map the characters into digits for computing the ROUGE score. 
+The script will output different performance, including _Precision_, _Recall_, _F1 measure_ at different numbers (e.g., 1,5, 10, 15) of top predictions and the _ROUGE_ scores for the top one prediction. For Chinese Weibo, we need to map the characters into digits for computing the _ROUGE_ score. 
 
 ## Citation
 If you use either the code or data in your paper, please cite our paper:
