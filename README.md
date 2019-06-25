@@ -3,7 +3,7 @@ The official implementation of the **NAACL-HLT 2019 oral** paper "[Microblog Has
 
 
 ## Data
-Due to the copyright issue of TREC 2011 Twitter dataset, we only release the Weibo dataset (in `data/Weibo`). For more details about the Twitter dataset, please contact [Yue Wang](yuewang-cuhk.github.io) or [Jing Li](https://girlgunner.github.io/jingli/).
+Due to the copyright issue of TREC 2011 Twitter dataset, we only release the Weibo dataset (in `data/Weibo`). For more details about the Twitter dataset, please contact [Yue Wang](https://yuewang-cuhk.github.io/) or [Jing Li](https://girlgunner.github.io/jingli/).
 
 ### Weibo data format
 * The dataset is randomly splited into three segments (80% training, 10% validation, 10% testing)
