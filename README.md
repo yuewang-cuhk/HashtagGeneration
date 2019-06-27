@@ -1,5 +1,5 @@
 # HashtagGeneration
-The official implementation of the **NAACL-HLT 2019 oral** paper "[Microblog Hashtag Generation via Encoding Conversation Contexts](https://www.aclweb.org/anthology/N19-1164)". This is a joint work with [NLP Center at Tencent AI Lab](https://ai.tencent.com/ailab/nlp/).
+The official implementation of the **NAACL-HLT 2019 oral** paper "[Microblog Hashtag Generation via Encoding Conversation Contexts](https://www.aclweb.org/anthology/N19-1164)". This is a joint work with [NLP Center at Tencent AI Lab](https://ai.tencent.com/ailab/nlp/). The slide for this paper at NAACL-HLT 2019 can be found [here](https://yuewang-cuhk.github.io/file/naacl19_slide.pdf).
 
 
 ## Data
@@ -10,10 +10,35 @@ Due to the copyright issue of TREC 2011 Twitter dataset, we only release the Wei
 * For each segment (train/valid/test), we have post, its conversation and corresponding hashtags (one line for each instance)
 * For multiple hashtags for one post, hashtags are seperated by a semicolon ";" 
 
+### Data statistics
+We first present some statistics of the two datasets, including number of posts and the average length (i.e., token number) of post, conversation, and hashtags.
+
+Datasets | # of posts | Avg len of posts | Avg len of convs | Avg len of tags | # of tags per post
+--- | --- | --- | --- | --- | ---
+Twitter | 44,793 | 13.27 | 29.94 | 1.69 | 1.14
+Weibo | 40,171 | 32.64 | 70.61 | 2.70 | 1.11
+
+We further analyze the detailed statistics of the hashtags below, including size of all the unique hashtags, the proportion of hashtags appearing in the post (**P**), conversation (**C**), and the union set of them (**P&C**). 
+
+Datasets | Size of Tagset | P | C | P&C 
+--- | --- | --- | --- | ---
+Twitter | 4,188 | 2.72% | 5.58% | 7.69%
+Weibo | 5,027 | 8.29% | 6.21% | 12.52%
+
+The distribution of hashtags frequency is depicted below. (The script for drawing this figure is in my [DrawFigureForPaper](https://github.com/yuewang-cuhk/DrawFigureForPaper) repo) 
+
+<p align="center">
+  <img src="https://github.com/yuewang-cuhk/HashtagGeneration/blob/master/hashtag_distribution.PNG" alt="The overall architecture" width="500"/>
+</p>
+
+From such analysis, we can conclude that these two datasets have a *very low present hashtag rate* (unsuitable for extraction model) and the hashtag space is *large and imbalanced* (unsuitable for classification model).
 
 ## Model
 Our model uses a dual encoder to encode the user posts and its replies, followed by a bi-attention to capture their interactions. The extracted feature are further merged and fed into the hashtag decoder. The overall architecture is depicted below:
-![alt text](https://github.com/yuewang-cuhk/HashtagGeneration/blob/master/model.png "The overall architecture")
+
+<p align="center">
+  <img src="https://github.com/yuewang-cuhk/HashtagGeneration/blob/master/model.png" alt="The overall architecture" width="500"/>
+</p>
 
 ## Code
 This code is built based on a previous version of [OpenNMT](https://github.com/OpenNMT/OpenNMT-py) with Pytorch 0.4 (the current version only works with 1.0+). Basically I revise the code to support two sources of input and implement my bi-attention encoder in `onmt/Models`. Also, I provide an evaluation script `evaluate.py` to evaluate the model with the metric of _Precision_, _Recall_, _F1 measure_ at different numbers (e.g., 1,5, 10, 15) of top predictions and the _ROUGE_ scores for the top one prediction. All the running scripts are stored under `sh`.  
