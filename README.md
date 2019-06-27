@@ -5,7 +5,7 @@ The official implementation of the **NAACL-HLT 2019 oral** paper "[Microblog Has
 ## Data
 Due to the copyright issue of TREC 2011 Twitter dataset, we only release the Weibo dataset (in `data/Weibo`). For more details about the Twitter dataset, please contact [Yue Wang](https://yuewang-cuhk.github.io/) or [Jing Li](https://girlgunner.github.io/jingli/).
 
-### Weibo data format
+### Data format
 * The dataset is randomly splited into three segments (80% training, 10% validation, 10% testing)
 * For each segment (train/valid/test), we have post, its conversation and corresponding hashtags (one line for each instance)
 * For multiple hashtags for one post, hashtags are seperated by a semicolon ";" 
@@ -13,17 +13,25 @@ Due to the copyright issue of TREC 2011 Twitter dataset, we only release the Wei
 ### Data statistics
 We first present some statistics of the two datasets, including number of posts and the average length (i.e., token number) of post, conversation, and hashtags.
 
+<center>
+
 Datasets | # of posts | Avg len of posts | Avg len of convs | Avg len of tags | # of tags per post
 --- | --- | --- | --- | --- | ---
 Twitter | 44,793 | 13.27 | 29.94 | 1.69 | 1.14
 Weibo | 40,171 | 32.64 | 70.61 | 2.70 | 1.11
 
+</center>
+
 We further analyze the detailed statistics of the hashtags below, including size of all the unique hashtags, the proportion of hashtags appearing in the post (**P**), conversation (**C**), and the union set of them (**P&C**). 
+
+<center>
 
 Datasets | Size of Tagset | P | C | P&C 
 --- | --- | --- | --- | ---
 Twitter | 4,188 | 2.72% | 5.58% | 7.69%
 Weibo | 5,027 | 8.29% | 6.21% | 12.52%
+
+</center>
 
 The distribution of hashtags frequency is depicted below. (The script for drawing this figure is in my [DrawFigureForPaper](https://github.com/yuewang-cuhk/DrawFigureForPaper) repo) 
 
@@ -31,13 +39,13 @@ The distribution of hashtags frequency is depicted below. (The script for drawin
   <img src="https://github.com/yuewang-cuhk/HashtagGeneration/blob/master/hashtag_distribution.PNG" alt="The overall architecture" width="500"/>
 </p>
 
-From such analysis, we can conclude that these two datasets have a *very low present hashtag rate* (unsuitable for extraction model) and the hashtag space is *large and imbalanced* (unsuitable for classification model).
+From such analysis, we can conclude that these two datasets have a **very low present hashtag rate** (unsuitable for extraction model) and the hashtag space is **large and imbalanced** (unsuitable for classification model).
 
 ## Model
-Our model uses a dual encoder to encode the user posts and its replies, followed by a bi-attention to capture their interactions. The extracted feature are further merged and fed into the hashtag decoder. The overall architecture is depicted below:
+Our model uses a dual encoder to encode the user posts and its replies, followed by a bi-attention to capture their interactions. The extracted features are further merged and fed into the hashtag decoder. The overall architecture is depicted below:
 
 <p align="center">
-  <img src="https://github.com/yuewang-cuhk/HashtagGeneration/blob/master/model.png" alt="The overall architecture" width="500"/>
+  <img src="https://github.com/yuewang-cuhk/HashtagGeneration/blob/master/model.png" alt="The overall architecture" width="600"/>
 </p>
 
 ## Code
